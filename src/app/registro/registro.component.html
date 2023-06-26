@@ -1,0 +1,65 @@
+<nav class="navbar navbar-expand-lg bg-body-tertiary">
+    <div class="container-fluid">
+      <img src="../assets/IMGinfotec.png" alt="" height="130px" >
+      <a class="navbar-brand" href="#">Navbar w/ text</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarText">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" routerLink="/home">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Features</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Pricing</a>
+          </li>
+        </ul>
+        <div class="button-container">
+          <button id="button" type="button" class="btn btn-primary btn-lg " routerLink="/login"  >Iniciar sesión</button>
+        </div>
+       
+      </div>
+    </div>
+  </nav>
+  <div class="container">
+    <div class="row">
+      <div class="col-md-6">
+        <img src="../assets/iniciopag.png" alt="Imagen" class="img-fluid">
+      </div>
+      <div class="col-md-6">
+        <h1>Formulario de Registro</h1>
+        <form>
+            <div class="mb-3">
+              <label for="registroNombre" class="form-label">Nombre</label>
+              <input type="text" class="form-control" id="registroNombre" placeholder="Ingresa tu nombre" required>
+            </div>
+            <div class="mb-3">
+              <label for="registroEmail" class="form-label">Correo Electrónico</label>
+              <input type="email" class="form-control" id="registroEmail" placeholder="Ingresa tu correo electrónico" required>
+            </div>
+            <div class="mb-3">
+              <label for="registroEdad" class="form-label">Edad</label>
+              <input type="number" class="form-control" id="registroEdad" placeholder="Ingresa tu edad" required>
+            </div>
+            <div class="mb-3">
+              <label for="registroTelefono" class="form-label">Teléfono</label>
+              <input type="tel" class="form-control" id="registroTelefono" placeholder="Ingresa tu teléfono" required>
+            </div>
+            <div class="mb-3">
+              <label for="registroGenero" class="form-label">Género</label>
+              <select class="form-select" id="registroGenero" required>
+                <option value="" selected disabled>Selecciona tu género</option>
+                <option value="masculino">Masculino</option>
+                <option value="femenino">Femenino</option>
+              </select>
+            </div>
+            <button type="submit" class="btn btn-primary">Registrarse</button>
+          </form>
+      </div>
+    </div>
+  </div>
+  <router-outlet></router-outlet>
+
