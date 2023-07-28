@@ -1,0 +1,183 @@
+<div *ngIf="id" >
+
+
+<div class="container" >
+    <div class="main-body">
+          <nav class="navbar navbar-expand-lg">
+            <div class="container-fluid">
+              <img src="../assets/IMGinfotec.png" alt="" height="130px" >
+              <a class="navbar-brand" href="https://www.infotec.mx/">  Centro de Investigación INFOTEC</a>
+              <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+              </button>
+              <div class="collapse navbar-collapse" id="navbarText">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                  <li class="nav-item">
+                    <a class="nav-link" routerLink="/inicio">Test</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" routerLink="/about">Acera de Infotec</a>
+                  </li>
+                </ul>
+                <div class="button-container">
+                  <button id="button" type="button" class="btn btn-primary btn-lg " (click)="logout()" >Logout</button>
+                </div>
+              </div>
+            </div>
+          </nav>
+          <!-- /Breadcrumb -->
+    
+          <div class="row gutters-sm">
+            <div class="col-md-4 mb-3" >
+              <div class="card" style=" background: linear-gradient(blue, pink);">
+                <div class="card-body">
+                  <div class="d-flex flex-column align-items-center text-center">
+                    <img src="https://bootdey.com/img/Content/avatar/avatar7.png" alt="Admin" class="rounded-circle" width="150">
+                    <div class="mt-3">
+                      <h4>Nombre</h4>
+                      <p>{{usuarioData.nombre}}</p>
+                      <h4>Ocupacion</h4>
+                      <p class="text-secondary mb-1">{{usuarioData.ocupacion}}</p>
+                      <br><br>
+                      <input type="file" (change)="onFileSelected($event)">
+                    </div>
+                  </div>
+                </div>
+              </div>
+              
+            </div>
+            <div class="col-md-8">
+              <h1>Puedes editar tus datos</h1>
+              <div class="card mb-3">
+                <div class="card-body">
+                  <div class="row">
+                    <div class="col-sm-3">
+                      <h6 class="mb-0">Nombre</h6>
+                    </div>
+                    <div class="col-sm-9 text-secondary">
+                      <input class="form-control" type="text" id="nombre" name="nombre" [(ngModel)]="usuarioData.nombre">
+                    </div>
+                    
+                  </div>
+                  <hr>
+                  <div class="row">
+                    <div class="col-sm-3">
+                      <h6 class="mb-0">Apellidos</h6>
+                    </div>
+                    <div class="col-sm-9 text-secondary">
+                      <input class="form-control" type="text" id="apellido" name="apellido" [(ngModel)]="usuarioData.apellido">
+                    </div>
+                  </div>
+                  <hr>
+                  <div class="row">
+                    <div class="col-sm-3">
+                      <h6 class="mb-0">Emai</h6>
+                    </div>
+                    <div class="col-sm-9 text-secondary">
+                      <input class="form-control" class="form-control"class="form-control" type="text" id="nombre" name="correoElectronico" [(ngModel)]="usuarioData.correoElectronico">
+                    </div>
+                  </div>
+                  <hr>
+                  <div class="row">
+                    <div class="col-sm-3">
+                      <h6 class="mb-0">Telefono</h6>
+                    </div>
+                    <div class="col-sm-9 text-secondary">
+                      <input class="form-control" type="text" id="telefono" name="telefono" [(ngModel)]="usuarioData.telefono">
+                    </div>
+                  </div>
+                  <hr>
+                  <div class="row">
+                    <div class="col-sm-3">
+                      <h6 class="mb-0">Ocupacion</h6>
+                    </div>
+                    <div class="col-sm-9 text-secondary" >
+                      <label for="registroGenero" class="form-label">¿Estas seguro de cambiar la ocupacion {{usuarioData.ocupacion}}?</label>
+                      <select class="form-select" id="registroProfesion"  [(ngModel)]="usuarioData.ocupacion" name="eighth" required #eighth="ngModel">
+                        <option value="" selected disabled>Selecciona tu profesión</option>
+                        <option value="Programador">Programador</option>
+                        <option value="Diseñador">Diseñador</option>
+                        <option value="Tecnico de Redes">Técnico de Redes</option>
+                      </select>
+                    </div>
+                    
+                  </div>
+                  
+                  <hr>
+                  
+                  <div class="row">
+                    <div class="col-sm-12">
+                 
+                      <a class="btn btn-info " target="__blank" (click)="modificarUsuario()">Editar mi perfil</a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="row gutters-sm">
+                <div class="col-sm-6 mb-3" *ngIf="usuario && usuario.testList && usuario.testList.length > 0">
+                  <div class="card h-100">
+                    <div class="card-body">
+                      <h6 class="d-flex align-items-center mb-3">Test Técnico:</h6>
+                
+                      <div *ngFor="let test of usuario.testList">
+                        <h4>Resultado</h4>
+                        <div>
+                          <small>Nombre prueba:</small>
+                          <p>{{ test.nombreTest }}</p>
+                        </div>
+                        <div>
+                          <small>Puntuación:</small>
+                          <p>{{ test.puntaje }} puntos de 30 puntos</p>
+                        </div>
+                        <div>
+                          <small>Tus Resultado</small>
+                          <p>{{ test.descripcion }}</p>
+                        </div>
+                        <button type="button" class="btn btn-danger" (click)="borrarTest(test.id)">Eliminar Prueba</button>
+                        <hr>
+                      </div>
+                
+                    </div>
+                  </div>
+                </div>
+                
+                <div class="col-sm-6 mb-3" *ngIf="usuario && usuario.tespList && usuario.tespList.length > 0">
+                  <div class="card h-100">
+                    <div class="card-body">
+                      <h6 class="d-flex align-items-center mb-3">Test Psicométrico:</h6>
+                
+                      <div *ngFor="let tesp of usuario.tespList">
+                        <h4>Resultado</h4>
+                        <div>
+                          <small>Nombre prueba:</small>
+                          <p>{{ tesp.nombreTest }}</p>
+                        </div>
+                        <div>
+                          <small>Puntuación:</small>
+                          <p>{{ tesp.puntaje }} puntos de 50 puntos</p>
+                        </div>
+                        <div>
+                          <small>Tus Resultado</small>
+                          <p>{{ tesp.descripcion }}</p>
+                        </div>
+                        <button type="button" class="btn btn-danger" (click)="borrarTestP(tesp.id)"> Eliminar Prueba</button>
+                        <hr>
+                      </div>
+                        
+                    </div>
+                  </div>
+                </div>
+                
+            </div>
+          </div>
+          <br><br>
+        </div>
+    </div>
+</div>
+</div>
+<div *ngIf="!id" >
+  <h1 style="margin: 500px;">
+    No estas logeado por favor Logeate!!
+  </h1>
+  </div>

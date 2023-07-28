@@ -1,0 +1,134 @@
+<nav class="navbar navbar-expand-lg">
+    <div class="container-fluid">
+      
+      <a class="navbar-brand" href="https://www.infotec.mx/">  Centro de Investigación INFOTEC</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarText">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+          
+            <li class="nav-item">
+                <a class="nav-link" routerLink="/listas">Lista de Usuarios</a>
+              </li>
+          <li class="nav-item">
+            <a class="nav-link" routerLink="/perfil">Mi Perfil</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" routerLink="/create-quiz">Crear Encuestas</a>
+          </li>
+        </ul>
+        <div class="button-container">
+          <button id="button" type="button" class="btn btn-primary btn-lg "   >Logout</button>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <div class="container">
+    <h1>Lista de Usuarios</h1>
+    <table class="table">
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Nombre</th>
+          <th>apellido</th>
+          <th>Email</th>
+          <th>Ocupacion</th>
+     
+          <th>Actualizar Usuario</th>
+          <th>Eliminar</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let usuario of usuarios">
+          <td>{{usuario.idUsuario}}</td>
+          <td>{{ usuario.nombre }}</td>
+          <td>{{ usuario.apellido }}</td>
+          <td>{{ usuario.correoElectronico }}</td>
+          <td>{{ usuario.ocupacion }}</td>
+          <td><button type="button" class="btn btn-secondary" (click)="cargarUsuario(usuario.idUsuario)">Actualizar Usuario</button></td>
+          <td><button type="button" class="btn btn-danger" (click)="eliminarUsuario(usuario.idUsuario)">Eliminar Usuario</button></td>
+        </tr>
+      </tbody>
+    </table>
+    <form id="form1" name="form1" #myForm="ngForm">
+        <div class="form-group" >
+          <label for="nombre">Nombre:</label>
+          <input type="text" id="nombre" name="nombre" class="form-control" [(ngModel)]="usuarioData.nombre" name="first" required>
+        </div>
+        <div class="form-group">
+            <label for="apellido">Apellidos:</label>
+            <input type="text" id="nombre" name="apellido" class="form-control" [(ngModel)]="usuarioData.apellido" name="second" required>
+          </div>
+        <div class="form-group">
+          <label for="email">Email:</label>
+          <input type="email" id="email"  name="email" class="form-control" [(ngModel)]="usuarioData.correoElectronico" name="third" required>
+        </div>
+        <div class="form-group">
+          <label for="genero">Género:</label>
+          <select class="form-select" id="registroGenero" name="genero" [(ngModel)]="usuarioData.genero">
+            <option value="" disabled>Selecciona tu género</option>
+            <option value="masculino">Masculino</option>
+            <option value="femenino">Femenino</option>
+          </select>
+        </div>        
+          <div class="form-group">
+            <label for="edad">Edad:</label>
+            <input type="number" id="edad"  name="edad" class="form-control" [(ngModel)]="usuarioData.edad" name="fifth" required>
+          </div>
+          <div class="form-group">
+            <label for="telefono">Telefono:</label>
+            <input class="form-control" type="number" id="telefono" name="telefono" [(ngModel)]="usuarioData.telefono" name="sixth">
+          </div>
+          <div class="form-group">
+            <label for="ocupacion">Ocupacion:</label>
+            <input type="text" id="email"  name="genero" class="form-control" [(ngModel)]="usuarioData.ocupacion" name="seventh" required>
+          </div><br>
+        <button type="submit" class="btn btn-primary" style="width: 100%;" (click)="modificarUsuario()" >Guardar</button>
+      </form>
+      
+  </div>
+  
+  <div class="container mt-4">
+    <div class="row">
+      <!-- Primer div a la izquierda -->
+      <div class="col-md-6 float-left">
+        <div class="card2">
+          <div class="card-header">
+            Test Psicometrico del usuario
+          </div>
+          <div class="card-body">
+            <ul class="list-group">
+              <li *ngFor="let tesp of tesps" class="list-group-item">
+                <h5 class="mb-1">{{ tesp.nombreTest }}</h5>
+                <p class="mb-1">Puntaje: {{ tesp.puntaje }}</p>
+                <p class="mb-0">Descripción: {{ tesp.descripcion }}</p>
+                <hr>
+                <button class="btn btn-danger" (click)="borrarTestP(idUsuario!,tesp.id)"> Borrar Test del usuario</button>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+  
+      <!-- Segundo div a la derecha -->
+      <div class="col-md-6 float-right">
+        <div class="card3">
+          <div class="card-header">
+            Test Tecnico del usuario
+          </div>
+          <div class="card-body">
+            <ul class="list-group">
+              <li *ngFor="let test of tests" class="list-group-item">
+                <h5 class="mb-1">{{ test.nombreTest }}</h5>
+                <p class="mb-1">Puntaje: {{ test.puntaje }}</p>
+                <p class="mb-0">Descripción: {{ test.descripcion }}</p> <hr>
+                <button class="btn btn-danger" (click)="borrarTest(id)"> Borrar Test del usuario</button>
+              </li>
+            </ul>
+          </div><br>
+        </div>
+      </div><br>
+    </div>
+  </div><br><br><br>

@@ -1,0 +1,38 @@
+* {
+    box-sizing: border-box;
+    font-family: Arial, Helvetica, sans-serif;
+    
+  }
+  
+  body {
+    margin: 0px;
+    font-family: Arial, Helvetica, sans-serif;
+  }
+  .navbar{
+    width: 100%;
+  }
+  .container-fluid{
+    background-color: rgb(238, 135, 25);
+    margin: 1px;
+    padding: auto;
+  }
+  /* Style the content */
+  .content {
+    background-color: #ffffff;
+    padding: 10px;
+    height: 0px; /* Should be removed. Only for demonstration */
+  }
+  .button-container {
+    display: flex;
+    justify-content: space-between;
+  }
+.container{
+  background: #e1d5d5;
+
+}
+#button{
+  display: block;
+  padding: 0.5rem 1rem;
+  width: 200px;
+  margin: 0 auto;
+}

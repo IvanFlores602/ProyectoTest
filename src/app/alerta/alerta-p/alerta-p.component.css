@@ -1,0 +1,17 @@
+.center{
+    width: 99%;
+    height: 860px;
+    background-image: url("/assets/alertP.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    margin: 5px;
+    background-color: rgb(240, 218, 166);
+    border: solid 1px;
+    text-decoration-color: brown;
+}
+li{
+    background-color: aliceblue;
+    margin: 100px 0px 0px 0px;
+    color: black;
+    font-size: 29px;
+}

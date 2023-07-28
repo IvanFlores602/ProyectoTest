@@ -1,0 +1,116 @@
+<nav class="navbar navbar-expand-lg bg-body-tertiary">
+    <div class="container-fluid">
+      <img src="../assets/IMGinfotec.png" alt="" height="130px" >
+    
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarText">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+          <li class="nav-item">
+            <a class="navbar-brand" href="https://www.infotec.mx/">  Centro de Investigación INFOTEC</a>
+         
+          </li>
+          
+          <li class="nav-item">
+            <a class="nav-link" routerLink="/about">Acera de Infotec</a>
+          </li>
+        </ul>
+        <div class="button-container">
+          <button id="button" type="button" class="btn btn-primary btn-lg " routerLink="/login"  >Iniciar sesión</button>
+        </div>
+       
+      </div>
+    </div>
+  </nav>
+  <div class="container">
+    <div class="row">
+      <div class="col-md-6">
+        <img src="../assets/iniciopag.png" alt="Imagen" class="img-fluid">
+      </div>
+      <div class="col-md-6">
+        <h1>Registro <img width="180px" src="https://www.seekpng.com/png/detail/202-2022306_agregar-usuario-iconos-vectoriales-gratis-diseados-iconos-de.png" alt=""></h1> 
+        <form id="form1" name="form1" #myForm="ngForm" (ngSubmit)="registrarUsuario()" novalidate >
+          <div class="mb-3">
+            <label for="registroNombre" class="form-label">Nombre</label>
+            <input type="text" class="form-control" id="registroNombre" placeholder="Ingresa tu nombre" [(ngModel)]="registroData.firstName" name="first" required #first="ngModel" />
+            <div *ngIf="first.invalid && (first.dirty || first.touched)" class="text-danger">
+              El campo Nombre es requerido.
+            </div>
+          </div>
+          <div class="mb-3">
+            <label for="registroApellidos" class="form-label">Apellidos</label>
+            <input type="text" class="form-control" id="registroApellidos" placeholder="Ingresa tus apellidos" [(ngModel)]="registroData.lastName" name="second" required #second="ngModel" />
+            <div *ngIf="second.invalid && (second.dirty || second.touched)" class="text-danger">
+              El campo Apellidos es requerido.
+            </div>
+          </div>
+          <div class="mb-3">
+            <label for="registroEdad" class="form-label">Edad</label>
+            <input type="number" class="form-control" id="registroEdad" placeholder="Ingresa tu edad" [(ngModel)]="registroData.age" name="third" required #third="ngModel" />
+            <div *ngIf="third.invalid && (third.dirty || third.touched)" class="text-danger">
+              El campo Edad es requerido.
+            </div>
+          </div>
+            <div class="mb-3">
+              <label for="registroTelefono" class="form-label">Teléfono</label>
+              <input type="number" class="form-control" id="registroTelefono" placeholder="Ingresa tu teléfono" [(ngModel)]="registroData.phone" name="fourth" required #fourth="ngModel" />
+              <div *ngIf="fourth.invalid && (fourth.dirty || fourth.touched)" class="text-danger">
+                El campo Teléfono es requerido.
+              </div>
+            </div>
+          <div class="mb-3">
+            <label for="registroEmail" class="form-label">Correo Electrónico</label>
+            <input type="email" class="form-control" id="registroEmail" placeholder="Ingresa tu correo electrónico" [(ngModel)]="registroData.correo" name="fifth" required #fifth="ngModel" />
+            <div *ngIf="fifth.invalid && (fifth.dirty || fifth.touched)" class="text-danger">
+              El campo Correo Electrónico es requerido.
+            </div>
+          </div>
+          <div class="mb-3">
+            <div class="form-group">
+              <label for="registroPassword" class="form-label">Contraseña</label>
+              <input type="password" class="form-control" id="password" placeholder="Ingresa tu Password" [(ngModel)]="registroData.contra" name="sixth" required #sixth="ngModel" />
+              <div *ngIf="sixth.invalid && (sixth.dirty || sixth.touched)" class="text-danger">
+                El campo Contraseña es requerido.
+              </div>
+            </div>
+          </div>
+          
+          <div class="mb-3">
+            <label for="registroGenero" class="form-label">Género</label>
+            <select class="form-select" id="registroGenero" [(ngModel)]="registroData.genes" name="seventh" required #seventh="ngModel">
+              <option value="" selected disabled>Selecciona tu género</option>
+              <option value="masculino">Masculino</option>
+              <option value="femenino">Femenino</option>
+            </select>
+            <div *ngIf="seventh.invalid && (seventh.dirty || seventh.touched)" class="text-danger">
+              Debes seleccionar tu género.
+            </div>
+          </div>
+          <div class="mb-3">
+            <label for="registroProfesion" class="form-label">Ocupación</label>
+            <select class="form-select" id="registroProfesion" [(ngModel)]="registroData.study" name="eighth" required #eighth="ngModel">
+              <option value="" selected disabled>Selecciona profesión</option>
+              <option value="Programador">Programador</option>
+              <option value="Diseñador">Diseñador</option>
+              <option value="Tecnico">Técnico</option>
+            </select>
+            <div *ngIf="eighth.invalid && (eighth.dirty || eighth.touched)" class="text-danger">
+              Debes seleccionar una ocupación.
+            </div>
+          </div>
+          <br>
+          <button type="submit" class="btn btn-primary" style="width: 100%;">Registrarse</button>
+        </form>
+        <br>
+        <br>
+      </div>
+    </div>
+    <br>
+    <br>
+  </div>
+  
+  <router-outlet></router-outlet>
+  
+
+

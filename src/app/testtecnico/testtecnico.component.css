@@ -1,0 +1,36 @@
+* {
+    box-sizing: border-box;
+    font-family: Arial, Helvetica, sans-serif;
+    
+  }
+  
+  body {
+    margin: 0px;
+    font-family: Arial, Helvetica, sans-serif;
+  }
+  .container-fluid{
+    background-color: rgb(238, 135, 25);
+  }
+  /* Style the content */
+  .content {
+    background-color: #ffffff;
+    padding: 0px;
+    height: 160px; float: left;/* Should be removed. Only for demonstration */
+  }
+  .button-container {
+    display: flex;
+    justify-content: space-between;
+  }
+
+
+  .row{
+    padding: 100px;
+}
+
+.card{
+    height: 450px;
+    text-align: center;
+    padding: 10px;
+    float: right;
+    margin: 30px;
+}

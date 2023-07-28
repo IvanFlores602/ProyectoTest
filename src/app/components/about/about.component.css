@@ -1,0 +1,37 @@
+* {
+    box-sizing: border-box;
+    font-family: Arial, Helvetica, sans-serif;
+    
+  }
+  
+  body {
+    margin: 0px;
+    font-family: Arial, Helvetica, sans-serif;
+    
+  }
+  .container-fluid{
+    background-color: rgb(238, 135, 25);
+
+  }
+  /* Style the content */
+  .content {
+    background-color: #ffffff;
+    padding: 0px;
+    height: 150px; /* Should be removed. Only for demonstration */
+  }
+  .button-container {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  .imagen{
+    width: 70%;
+    background: #000000;
+  }
+.container{
+  text-align: center;
+  font-size: 22px;
+}
+.row{
+  border: 2px solid;
+}
