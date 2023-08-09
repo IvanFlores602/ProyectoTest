@@ -1,0 +1,167 @@
+<nav class="navbar navbar-expand-lg">
+  <div class="container-fluid">
+    
+   
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarText">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        
+          <li class="nav-item">
+              <a class="nav-link" routerLink="/listas">Lista de Usuarios</a>
+            </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/perfil">Mi Perfil</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/encuestas">Crear Test Tecnicos</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/buscar">Ver test Tecnicos</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/crearpsicometrico">Crear test Psicometrico </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/buscarP">Buscar Test creados Psicometricos  |</a>
+        </li>
+      </ul>
+      <div class="button-container">
+        <button id="button" type="button" class="btn btn-primary btn-lg "   >Logout</button>
+      </div>
+    </div>
+  </div>
+</nav>
+  <div class="container">
+    <h2>Listado de Test</h2>
+    <ul class="list-group">
+      <li class="list-group-item" *ngFor="let cuestionario of cuestionarios">
+        <h3>{{ cuestionario.titulo }}</h3>
+        <!-- Mostrar el resto de las propiedades del cuestionario aquí -->
+      </li>
+    </ul><br><br>
+    <h2>Crear Test</h2>
+    <div class="form-group">
+      <label for="pregunta1">Titulo</label>
+      <input type="text" class="form-control" id="pregunta1" [(ngModel)]="nuevoCuestionario.titulo" name="titulo">
+      <h1 for="pregunta1">Pregunta1</h1>
+      <input type="text" class="form-control" id="pregunta1" [(ngModel)]="nuevoCuestionario.pregunta1" name="pregunta1"><br>
+      <label for="respuesta11">respuesta 1</label>
+      <input type="text" class="form-control" id="respuesta11" [(ngModel)]="nuevoCuestionario.respuesta11" name="respuesta11">
+      <label for="respuesta12">respuesta 2</label>
+      <input type="text" class="form-control" id="respuesta12" [(ngModel)]="nuevoCuestionario.respuesta12" name="respuesta12">
+      <label for="respuesta13">respuesta 3</label>
+      <input type="text" class="form-control" id="respuesta13" [(ngModel)]="nuevoCuestionario.respuesta13" name="respuesta13">
+      <label for="respuesta14">respuesta 4</label>
+      <input type="text" class="form-control" id="respuesta14" [(ngModel)]="nuevoCuestionario.respuesta14" name="respuesta14"><hr>
+      <br>
+      <h1 for="pregunta2">Pregunta2</h1>
+      <input type="text" class="form-control" id="pregunta2" [(ngModel)]="nuevoCuestionario.pregunta2" name="pregunta2"><br>
+      <label for="respuesta21">respuesta 1</label>
+      <input type="text" class="form-control" id="respuesta21" [(ngModel)]="nuevoCuestionario.respuesta21" name="respuesta21">
+      <label for="respuesta22">respuesta 2</label>
+      <input type="text" class="form-control" id="respuesta22" [(ngModel)]="nuevoCuestionario.respuesta22" name="respuesta22">
+      <label for="respuesta23">respuesta 3</label>
+      <input type="text" class="form-control" id="respuesta23" [(ngModel)]="nuevoCuestionario.respuesta23" name="respuesta23">
+      <label for="respuesta24">respuesta 4</label>
+      <input type="text" class="form-control" id="respuesta24" [(ngModel)]="nuevoCuestionario.respuesta24" name="respuesta24">
+
+      <h1 for="pregunta3">Pregunta3</h1>
+      <input type="text" class="form-control" id="pregunta3" [(ngModel)]="nuevoCuestionario.pregunta3" name="pregunta3"><br>
+      <label for="respuesta31">respuesta 1</label>
+      <input type="text" class="form-control" id="respuesta31" [(ngModel)]="nuevoCuestionario.respuesta31" name="respuesta31">
+      <label for="respuesta32">respuesta 2</label>
+      <input type="text" class="form-control" id="respuesta32" [(ngModel)]="nuevoCuestionario.respuesta32" name="respuesta32">
+      <label for="respuesta33">respuesta 3</label>
+      <input type="text" class="form-control" id="respuesta33" [(ngModel)]="nuevoCuestionario.respuesta33" name="respuesta33">
+      <label for="respuesta34">respuesta 4</label>
+      <input type="text" class="form-control" id="respuesta34" [(ngModel)]="nuevoCuestionario.respuesta34" name="respuesta34">
+
+      <h1 for="pregunta4">Pregunta4</h1>
+      <input type="text" class="form-control" id="pregunta4" [(ngModel)]="nuevoCuestionario.pregunta4" name="pregunta4"><br>
+      <label for="respuesta41">respuesta 1</label>
+      <input type="text" class="form-control" id="respuesta41" [(ngModel)]="nuevoCuestionario.respuesta41" name="respuesta41">
+      <label for="respuesta42">respuesta 2</label>
+      <input type="text" class="form-control" id="respuesta42" [(ngModel)]="nuevoCuestionario.respuesta42" name="respuesta42">
+      <label for="respuesta43">respuesta 3</label>
+      <input type="text" class="form-control" id="respuesta43" [(ngModel)]="nuevoCuestionario.respuesta43" name="respuesta43">
+      <label for="respuesta44">respuesta 4</label>
+      <input type="text" class="form-control" id="respuesta44" [(ngModel)]="nuevoCuestionario.respuesta44" name="respuesta44">
+
+      <h1 for="pregunta5">Pregunta5</h1>
+      <input type="text" class="form-control" id="pregunta5" [(ngModel)]="nuevoCuestionario.pregunta5" name="pregunta5"><br>
+      <label for="respuesta51">respuesta 1</label>
+      <input type="text" class="form-control" id="respuesta51" [(ngModel)]="nuevoCuestionario.respuesta51" name="respuesta51">
+      <label for="respuesta52">respuesta 2</label>
+      <input type="text" class="form-control" id="respuesta52" [(ngModel)]="nuevoCuestionario.respuesta52" name="respuesta52">
+      <label for="respuesta53">respuesta 3</label>
+      <input type="text" class="form-control" id="respuesta53" [(ngModel)]="nuevoCuestionario.respuesta53" name="respuesta53">
+      <label for="respuesta54">respuesta 4</label>
+      <input type="text" class="form-control" id="respuesta54" [(ngModel)]="nuevoCuestionario.respuesta54" name="respuesta54">
+
+      <h1 for="pregunta6">Pregunta6</h1>
+      <input type="text" class="form-control" id="pregunta6" [(ngModel)]="nuevoCuestionario.pregunta6" name="pregunta6"><br>
+      <label for="respuesta61">respuesta 1</label>
+      <input type="text" class="form-control" id="respuesta61" [(ngModel)]="nuevoCuestionario.respuesta61" name="respuesta61">
+      <label for="respuesta62">respuesta 2</label>
+      <input type="text" class="form-control" id="respuesta62" [(ngModel)]="nuevoCuestionario.respuesta62" name="respuesta62">
+      <label for="respuesta63">respuesta 3</label>
+      <input type="text" class="form-control" id="respuesta63" [(ngModel)]="nuevoCuestionario.respuesta63" name="respuesta63">
+      <label for="respuesta64">respuesta 4</label>
+      <input type="text" class="form-control" id="respuesta64" [(ngModel)]="nuevoCuestionario.respuesta64" name="respuesta64">
+
+      <h1 for="pregunta7">Pregunta7</h1>
+      <input type="text" class="form-control" id="pregunta7" [(ngModel)]="nuevoCuestionario.pregunta7" name="pregunta7"><br>
+      <label for="respuesta71">respuesta 1</label>
+      <input type="text" class="form-control" id="respuesta71" [(ngModel)]="nuevoCuestionario.respuesta71" name="respuesta71">
+      <label for="respuesta72">respuesta 2</label>
+      <input type="text" class="form-control" id="respuesta72" [(ngModel)]="nuevoCuestionario.respuesta72" name="respuesta72">
+      <label for="respuesta73">respuesta 3</label>
+      <input type="text" class="form-control" id="respuesta73" [(ngModel)]="nuevoCuestionario.respuesta73" name="respuesta73">
+      <label for="respuesta74">respuesta 4</label>
+      <input type="text" class="form-control" id="respuesta74" [(ngModel)]="nuevoCuestionario.respuesta74" name="respuesta74">
+
+      <h1 for="pregunta8">Pregunta8</h1>
+      <input type="text" class="form-control" id="pregunta8" [(ngModel)]="nuevoCuestionario.pregunta8" name="pregunta8"><br>
+      <label for="respuesta81">respuesta 1</label>
+      <input type="text" class="form-control" id="respuesta81" [(ngModel)]="nuevoCuestionario.respuesta81" name="respuesta81">
+      <label for="respuesta82">respuesta 2</label>
+      <input type="text" class="form-control" id="respuesta82" [(ngModel)]="nuevoCuestionario.respuesta82" name="respuesta82">
+      <label for="respuesta83">respuesta 3</label>
+      <input type="text" class="form-control" id="respuesta83" [(ngModel)]="nuevoCuestionario.respuesta83" name="respuesta83">
+      <label for="respuesta84">respuesta 4</label>
+      <input type="text" class="form-control" id="respuesta84" [(ngModel)]="nuevoCuestionario.respuesta84" name="respuesta84">
+
+      <h1 for="pregunta9">Pregunta9</h1>
+      <input type="text" class="form-control" id="pregunta9" [(ngModel)]="nuevoCuestionario.pregunta9" name="pregunta9"><br>
+      <label for="respuesta91">respuesta 1</label>
+      <input type="text" class="form-control" id="respuesta91" [(ngModel)]="nuevoCuestionario.respuesta91" name="respuesta91">
+      <label for="respuesta92">respuesta 2</label>
+      <input type="text" class="form-control" id="respuesta92" [(ngModel)]="nuevoCuestionario.respuesta92" name="respuesta92">
+      <label for="respuesta93">respuesta 3</label>
+      <input type="text" class="form-control" id="respuesta93" [(ngModel)]="nuevoCuestionario.respuesta93" name="respuesta93">
+      <label for="respuesta94">respuesta 4</label>
+      <input type="text" class="form-control" id="respuesta94" [(ngModel)]="nuevoCuestionario.respuesta94" name="respuesta94">
+
+      <h1 for="pregunta10">Pregunta10</h1>
+      <input type="text" class="form-control" id="pregunta10" [(ngModel)]="nuevoCuestionario.pregunta10" name="pregunta10"><br>
+      <label for="respuesta101">respuesta 1</label>
+      <input type="text" class="form-control" id="respuesta101" [(ngModel)]="nuevoCuestionario.respuesta101" name="respuesta101">
+      <label for="respuesta102">respuesta 2</label>
+      <input type="text" class="form-control" id="respuesta102" [(ngModel)]="nuevoCuestionario.respuesta102" name="respuesta102">
+      <label for="respuesta103">respuesta 3</label>
+      <input type="text" class="form-control" id="respuesta103" [(ngModel)]="nuevoCuestionario.respuesta103" name="respuesta103">
+      <label for="respuesta104">respuesta 4</label>
+      <input type="text" class="form-control" id="pregunta104" [(ngModel)]="nuevoCuestionario.respuesta104" name="respuesta104">
+
+      
+    </div> <br><br>
+    <!-- Agrega aquí todos los campos necesarios para el cuestionario, por ejemplo: -->
+    <!-- Respuestas, más preguntas, etc. -->
+  
+    <button type="button" class="btn btn-primary" (click)="crearCuestionario()" style="width: 100%;">Crear Cuestionario</button>
+    <br><br>
+  </div>
+  
+  

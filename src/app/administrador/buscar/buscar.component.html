@@ -1,0 +1,349 @@
+<nav class="navbar navbar-expand-lg">
+  <div class="container-fluid">
+    
+   
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarText">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        
+          <li class="nav-item">
+              <a class="nav-link" routerLink="/listas">Lista de Usuarios</a>
+            </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/perfil">Mi Perfil</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/encuestas">Crear Test Tecnicos</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/buscar">Ver test Tecnicos</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/crearpsicometrico">Crear test Psicometrico </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/buscarP">Buscar Test creados Psicometricos  |</a>
+        </li>
+      </ul>
+      <div class="button-container">
+        <button id="button" type="button" class="btn btn-primary btn-lg "   >Logout</button>
+      </div>
+    </div>
+  </div>
+</nav>
+ <!-- Agrega un campo de búsqueda por ID -->
+<!-- Agrega un campo de búsqueda por ID -->
+<div class="container">
+    <div class="form-group">
+    <input type="number" class="form-control" id="idCuestionarioBusqueda" [(ngModel)]="idCuestionarioBusqueda" placeholder="Buscar por ID">
+    <button class="btn btn-primary" (click)="buscarCuestionarioPorId()">Buscar</button>
+
+    <div class="container mt-5">
+      <div class="d-flex justify-content-between">
+        <div *ngFor="let cuestionario of cuestionarios">
+          <p  > ID: {{cuestionario.idCuestionario}} | {{cuestionario.titulo}}</p>
+        </div>
+      </div>
+      <div *ngIf="cuestionarios.length === 0">
+        <p>No hay cuestionarios disponibles.</p>
+      </div>
+    </div>
+  
+  
+  
+
+<form *ngIf="cuestionarioSeleccionado">
+    <div class="row">
+        <h1 style="text-align: center;" value="titulo" >Título: {{ cuestionarioSeleccionado.titulo }}</h1>
+    <div class="col-md-6">
+      <div class="card">
+        <h4 class="card-body">Pregunta 1:</h4>
+        <div class="card-title">
+        <p class="question-title">{{ cuestionarioSeleccionado.pregunta1 }}</p>
+        <div class="options">
+          <div class="form-check" >
+            <input class="form-check-input" type="radio" id="option1" name="question1" value="b">
+            <label class="form-check-label option-label" for="option1">{{ cuestionarioSeleccionado.respuesta11 }}</label>
+          </div>
+          <div class="form-check" >
+            <input class="form-check-input" type="radio" id="option2" name="question1" value="a">
+            <label class="form-check-label option-label" for="option2">{{ cuestionarioSeleccionado.respuesta12 }}</label>
+          </div>
+          <div class="form-check">
+            <input class="form-check-input" type="radio" id="option3" name="question1" value="c">
+            <label class="form-check-label option-label" for="option3">{{ cuestionarioSeleccionado.respuesta13 }}</label>
+          </div>
+          <div class="form-check">
+            <input class="form-check-input" type="radio" id="option4" name="question1" value="d">
+            <label class="form-check-label option-label" for="option4">{{ cuestionarioSeleccionado.respuesta14 }}</label>
+          </div>
+        </div>
+      </div>
+      </div>
+    </div>
+    
+    <br>
+
+    <div class="col-md-6">
+      <div class="card">
+        <div class="card-body">
+          <h4 class="card-title">Pregunta 2:</h4>
+          <p class="card-text">{{ cuestionarioSeleccionado.pregunta2 }}</p>
+          <div class="options">
+            <div class="form-check">
+              <input class="form-check-input" type="radio" id="option5" name="question2" value="d">
+              <label class="form-check-label option-label" for="option5">{{ cuestionarioSeleccionado.respuesta21 }}</label>
+            </div>
+            <div class="form-check">
+              <input class="form-check-input" type="radio" id="option6" name="question2" value="c">
+              <label class="form-check-label option-label" for="option6">{{ cuestionarioSeleccionado.respuesta22 }}</label>
+            </div>
+            <div class="form-check">
+              <input class="form-check-input" type="radio" id="option7" name="question2" value="a">
+              <label class="form-check-label option-label" for="option7">{{ cuestionarioSeleccionado.respuesta23 }}</label>
+            </div>
+            <div class="form-check">
+              <input class="form-check-input" type="radio" id="option8" name="question2" value="b">
+              <label class="form-check-label option-label" for="option8">{{ cuestionarioSeleccionado.respuesta24 }}</label>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <br>
+    <div class="col-md-6">
+      <div class="card">
+        <div class="card-body">
+          <h4 class="card-title">Pregunta 3:</h4>
+          <p class="card-text">{{ cuestionarioSeleccionado.pregunta3 }}</p>
+          <div class="options">
+            <div class="form-check">
+              <input class="form-check-input" type="radio" id="option7" name="question3" value="d">
+              <label class="form-check-label option-label" for="option7">{{ cuestionarioSeleccionado.respuesta31 }}</label>
+            </div>
+            <div class="form-check">
+              <input class="form-check-input" type="radio" id="option8" name="question3" value="c">
+              <label class="form-check-label option-label" for="option8">{{ cuestionarioSeleccionado.respuesta32 }}</label>
+            </div>
+            <div class="form-check">
+              <input class="form-check-input" type="radio" id="option9" name="question3" value="b">
+              <label class="form-check-label option-label" for="option9">{{ cuestionarioSeleccionado.respuesta33 }}</label>
+            </div>
+            <div class="form-check">
+              <input class="form-check-input" type="radio" id="option10" name="question3" value="a">
+              <label class="form-check-label option-label" for="option10">{{ cuestionarioSeleccionado.respuesta34 }}</label>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>    
+    <br>
+
+    <div class="col-md-6">
+      <div class="card">
+        <div class="card-body">
+          <h4 class="card-title">Pregunta 4:</h4>
+          <p class="card-text">{{ cuestionarioSeleccionado.pregunta4 }}</p>
+          <div class="options">
+            <div class="form-check">
+              <input class="form-check-input" type="radio" id="option10" name="question4" value="c">
+              <label class="form-check-label option-label" for="option10">{{ cuestionarioSeleccionado.respuesta41 }}</label>
+            </div>
+            <div class="form-check">
+              <input class="form-check-input" type="radio" id="option11" name="question4" value="d">
+              <label class="form-check-label option-label" for="option11">{{ cuestionarioSeleccionado.respuesta42 }}</label>
+            </div>
+            <div class="form-check">
+              <input class="form-check-input" type="radio" id="option12" name="question4" value="b">
+              <label class="form-check-label option-label" for="option12">{{ cuestionarioSeleccionado.respuesta43 }}</label>
+            </div>
+            <div class="form-check">
+              <input class="form-check-input" type="radio" id="option13" name="question4" value="a">
+              <label class="form-check-label option-label" for="option13">{{ cuestionarioSeleccionado.respuesta44 }}</label>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>    
+    <br>
+    <div class="col-md-6">
+      <div class="card">
+        <div class="card-body">
+          <h4 class="card-title">Pregunta 5:</h4>
+          <p class="card-text">{{ cuestionarioSeleccionado.pregunta5 }}</p>
+          <div class="options">
+            <div class="form-check"> 
+              <input class="form-check-input" type="radio" id="option14" name="question5" value="b">
+              <label class="form-check-label option-label" for="option14">{{ cuestionarioSeleccionado.respuesta51 }}</label>
+            </div>
+            <div class="form-check">
+              <input class="form-check-input" type="radio" id="option15" name="question5" value="c">
+              <label class="form-check-label option-label" for="option15">{{ cuestionarioSeleccionado.respuesta52 }}</label>
+            </div>
+            <div class="form-check">
+              <input class="form-check-input" type="radio" id="option16" name="question5" value="a">
+              <label class="form-check-label option-label" for="option16">{{ cuestionarioSeleccionado.respuesta53 }}</label>
+            </div>
+            <div class="form-check">
+              <input class="form-check-input" type="radio" id="option17" name="question5" value="d">
+              <label class="form-check-label option-label" for="option17">{{ cuestionarioSeleccionado.respuesta54 }}</label>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>    
+    <br>
+
+    <div class="col-md-6">
+      <div class="card">
+        <div class="card-body">
+          <h4 class="card-title">Pregunta 6:</h4>
+          <p class="card-text">{{ cuestionarioSeleccionado.pregunta6 }}</p>
+          <div class="options">
+            <div class="form-check">
+              <input class="form-check-input" type="radio" id="option18" name="question6" value="a">
+              <label class="form-check-label option-label" for="option18">{{ cuestionarioSeleccionado.respuesta61 }}</label>
+            </div>
+            <div class="form-check">
+              <input class="form-check-input" type="radio" id="option19" name="question6" value="b">
+              <label class="form-check-label option-label" for="option19">{{ cuestionarioSeleccionado.respuesta62 }}</label>
+            </div>
+            <div class="form-check">
+              <input class="form-check-input" type="radio" id="option20" name="question6" value="c">
+              <label class="form-check-label option-label" for="option20">{{ cuestionarioSeleccionado.respuesta63 }}</label>
+            </div>
+            <div class="form-check">
+              <input class="form-check-input" type="radio" id="option21" name="question6" value="d">
+              <label class="form-check-label option-label" for="option21">{{ cuestionarioSeleccionado.respuesta64 }}</label>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>    
+    <br>
+
+    <div class="col-md-6">
+      <div class="card">
+        <div class="card-body">
+          <h4 class="card-title">Pregunta 7:</h4>
+          <p class="card-text">{{ cuestionarioSeleccionado.pregunta7 }}</p>
+          <div class="options">
+            <div class="form-check">
+              <input class="form-check-input" type="radio" id="option22" name="question7" value="b">
+              <label class="form-check-label option-label" for="option22">{{ cuestionarioSeleccionado.respuesta71 }}</label>
+            </div>
+            <div class="form-check">
+              <input class="form-check-input" type="radio" id="option23" name="question7" value="c">
+              <label class="form-check-label option-label" for="option23">{{ cuestionarioSeleccionado.respuesta72 }}</label>
+            </div>
+            <div class="form-check">
+              <input class="form-check-input" type="radio" id="option24" name="question7" value="d">
+              <label class="form-check-label option-label" for="option24">{{ cuestionarioSeleccionado.respuesta73 }}</label>
+            </div>
+            <div class="form-check">
+              <input class="form-check-input" type="radio" id="option25" name="question7" value="a">
+              <label class="form-check-label option-label" for="option25">{{ cuestionarioSeleccionado.respuesta74 }}</label>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>    
+    <br>
+
+    <div class="col-md-6">
+      <div class="card">
+        <div class="card-body">
+          <h4 class="card-title">Pregunta 8:</h4>
+          <p class="card-text">{{ cuestionarioSeleccionado.pregunta8 }}</p>
+          <div class="options">
+            <div class="form-check">
+              <input class="form-check-input" type="radio" id="option26" name="question8" value="d">
+              <label class="form-check-label option-label" for="option26">{{ cuestionarioSeleccionado.respuesta81 }}</label>
+            </div>
+            <div class="form-check">
+              <input class="form-check-input" type="radio" id="option27" name="question8" value="c">
+              <label class="form-check-label option-label" for="option27">{{ cuestionarioSeleccionado.respuesta82 }}</label>
+            </div>
+            <div class="form-check">
+              <input class="form-check-input" type="radio" id="option28" name="question8" value="a">
+              <label class="form-check-label option-label" for="option28">{{ cuestionarioSeleccionado.respuesta83 }}</label>
+            </div>
+            <div class="form-check">
+              <input class="form-check-input" type="radio" id="option29" name="question8" value="b">
+              <label class="form-check-label option-label" for="option29">{{ cuestionarioSeleccionado.respuesta84 }}</label>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>    
+    <br>
+
+    <div class="col-md-6">
+      <div class="card">
+        <div class="card-body">
+          <h4 class="card-title">Pregunta 9:</h4>
+          <p class="card-text">{{ cuestionarioSeleccionado.pregunta9 }}</p>
+          <div class="options">
+            <div class="form-check">
+              <input class="form-check-input" type="radio" id="option30" name="question9" value="b">
+              <label class="form-check-label option-label" for="option30">{{ cuestionarioSeleccionado.respuesta91 }}</label>
+            </div>
+            <div class="form-check">
+              <input class="form-check-input" type="radio" id="option31" name="question9" value="d">
+              <label class="form-check-label option-label" for="option31">{{ cuestionarioSeleccionado.respuesta92 }}</label>
+            </div>
+            <div class="form-check">
+              <input class="form-check-input" type="radio" id="option32" name="question9" value="c">
+              <label class="form-check-label option-label" for="option32">{{ cuestionarioSeleccionado.respuesta93 }}</label>
+            </div>
+            <div class="form-check">
+              <input class="form-check-input" type="radio" id="option33" name="question9" value="a">
+              <label class="form-check-label option-label" for="option33">{{ cuestionarioSeleccionado.respuesta94 }}</label>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>    
+    <br>
+
+    <div class="col-md-6">
+      <div class="card">
+        <div class="card-body">
+          <h4 class="card-title">Pregunta 10:</h4>
+          <p class="card-text">{{ cuestionarioSeleccionado.pregunta10 }}</p>
+          <div class="options">
+            <div class="form-check">
+              <input class="form-check-input" type="radio" id="option40" name="question10" value="a">
+              <label class="form-check-label option-label" for="option40">{{ cuestionarioSeleccionado.respuesta101 }}</label>
+            </div>
+            <div class="form-check">
+              <input class="form-check-input" type="radio" id="option41" name="question10" value="b">
+              <label class="form-check-label option-label" for="option41">{{ cuestionarioSeleccionado.respuesta102 }}</label>
+            </div>
+            <div class="form-check">
+              <input class="form-check-input" type="radio" id="option42" name="question10" value="c">
+              <label class="form-check-label option-label" for="option42">{{ cuestionarioSeleccionado.respuesta103 }}</label>
+            </div>
+            <div class="form-check">
+              <input class="form-check-input" type="radio" id="option43" name="question10" value="d">
+              <label class="form-check-label option-label" for="option43">{{ cuestionarioSeleccionado.respuesta104 }}</label>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>    
+    <br><br>
+
+    <div class="moverPadre">
+      <div class="mover d-flex justify-content-center"><br>
+        <button class="btn btn-primary" style="width: 75%; text-align: center;" (click)="enviarFormularioTecnico()"> ENVIAR CUESTIONARIO</button>
+        </div>  <br><br>
+      </div>
+    
+    </div>
+  </form>
+</div>
+  
+  

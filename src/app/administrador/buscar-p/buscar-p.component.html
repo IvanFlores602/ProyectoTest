@@ -1,0 +1,115 @@
+<nav class="navbar navbar-expand-lg">
+  <div class="container-fluid">
+    
+   
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarText">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        
+          <li class="nav-item">
+              <a class="nav-link" routerLink="/listas">Lista de Usuarios</a>
+            </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/perfil">Mi Perfil</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/encuestas">Crear Test Tecnicos</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/buscar">Ver test Tecnicos</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/crearpsicometrico">Crear test Psicometrico </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/buscarP">Buscar Test creados Psicometricos  |</a>
+        </li>
+      </ul>
+      <div class="button-container">
+        <button id="button" type="button" class="btn btn-primary btn-lg "   >Logout</button>
+      </div>
+    </div>
+  </div>
+</nav>
+
+<div class="container mt-5">
+  <div class="row justify-content-center">
+    <div class="col-md-6">
+      <h2 class="text-center">Buscar Examen por ID</h2>
+      <!-- Input para ingresar el ID del examen -->
+      <div class="form-group">
+        <label for="examenId">ID del Examen:</label>
+        <input type="number" class="form-control" id="examenId" [(ngModel)]="examenId">
+      </div>
+
+      <!-- Botón para buscar el examen por ID -->
+      <button type="button" class="btn btn-primary btn-block" (click)="buscarExamenPorId(examenId)">Buscar</button>
+    </div>
+  </div>
+  <div class="container mt-5">
+    <div class="d-flex justify-content-between">
+      <div *ngFor="let examen of examenes">
+        <button class="btn btn-danger" (click)="buscarExamenPorId(examen.id)">{{ examen.nombre }}</button>
+      </div>
+    </div>
+    <div *ngIf="examenes.length === 0">
+      <p>No hay exámenes disponibles.</p>
+    </div>
+  </div>
+
+  <!-- Cuestionario encontrado -->
+  <div class="row mt-3" *ngIf="examenEncontrado">
+    <div class="col-md-12">
+      <h1 class="text-center">Nombre del Examen: {{ examenEncontrado.nombre }}</h1>
+    </div>
+    <div class="col-md-12 d-flex justify-content-center">
+      <div class="card">
+        <div class="card-body">
+          <div *ngIf="examenEncontrado">
+            <h4 class="card-title">Examen: {{ examenEncontrado.nombre }}</h4>
+            <div *ngFor="let pregunta of examenEncontrado.preguntas">
+              <h5 class="card-title">Pregunta:</h5>
+              <p class="question-title">{{ pregunta.titulo }}</p>
+              <div class="options">
+                <div class="form-check" *ngFor="let respuesta of pregunta.respuestas">
+                  <input
+                    class="form-check-input"
+                    type="radio"
+                    [attr.name]="'pregunta-' + pregunta.id"
+                    [value]="respuesta"
+                  >
+                  <label class="form-check-label option-label" [attr.for]="'pregunta-' + pregunta.id">
+                    {{ respuesta }}
+                  </label>
+                </div>
+              </div>
+            </div>
+          </div>
+         
+        </div>
+      </div>
+    </div>
+    
+    
+    
+    
+
+    <div class="col-md-12 text-center mt-3">
+      <!-- Botón para enviar el formulario -->
+      <button class="btn btn-primary" style="width: 75%;" (click)="enviarFormulario()">ENVIAR CUESTIONARIO</button>
+    </div>
+  </div><br><br><br>
+
+  <!-- Mensaje de examen no encontrado -->
+  <div class="row justify-content-center mt-3" *ngIf="examenEncontrado === null">
+    <div class="col-md-6">
+      <p class="text-center">Examen no encontrado.</p>
+    </div>
+  </div>
+</div>
+
+
+  
+  

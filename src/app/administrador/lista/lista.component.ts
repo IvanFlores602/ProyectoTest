@@ -5,6 +5,7 @@ import Swal from 'sweetalert2';
 import { FormsModule } from '@angular/forms';
 import { Test } from 'src/app/Models/Test';
 import { Tesp } from 'src/app/Models/Tesp';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-lista',
@@ -44,7 +45,8 @@ export class ListaComponent implements OnInit {
   tests: Test[] = [];
   tesps: Tesp[] = [];
 
-  constructor(private UsuarioService: UsuarioService) { 
+  constructor(private UsuarioService: UsuarioService, private router: Router) { 
+    this.id = localStorage.getItem('idUusario')
     this.tespId = localStorage.getItem('id')
     this.testId = localStorage.getItem('id')
   }
@@ -87,6 +89,8 @@ export class ListaComponent implements OnInit {
               this.form1.reset();
             }
           });
+          // Recargar la página después de eliminar el test
+          window.location.reload();
         },
         error => {
           console.error('Error al modificar el usuario:', error);
@@ -134,43 +138,90 @@ cargarUsuario(idUsuario: number): void {
 
 
 
-borrarTestP(idUsuario: number, id: number) {
-  this.UsuarioService.eliminarTestP(idUsuario, id).subscribe(
-    () => {
-      console.log('Test eliminado correctamente.');
-      Swal.fire({
-        title: '¡Test Eliminado!',
-        icon: 'success',
-        showCancelButton: false,
-        confirmButtonText: 'Aceptar',
-        timer: 3000,
-        timerProgressBar: true,
-      });
-    },
-    error => {
-      console.error('Error al eliminar el test:', error);
-      Swal.fire({
-        title: 'Error',
-        text: 'Paso un error al eliminar el Usuario.',
-        icon: 'error',
-        showCancelButton: false
-      });
-    }
-  );
+borrarTestP(tesp: any, idUsuario: number) {
+  if (tesp?.id) {
+    Swal.fire({
+      title: '¿Estás seguro?',
+      text: 'Esta acción eliminará el tesp. ¿Estás seguro de continuar?',
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonText: 'Sí, eliminar',
+      cancelButtonText: 'Cancelar',
+    }).then((result) => {
+      if (result.isConfirmed) {
+        this.UsuarioService.eliminarTestP(this.usuarioData.idUsuario, tesp.id).subscribe(
+          () => {
+            console.log('Test eliminado correctamente.');
+            Swal.fire({
+              title: '¡Test Eliminado!',
+              text: 'El tesp ha sido eliminado correctamente.',
+              icon: 'success',
+              showCancelButton: false,
+              confirmButtonText: 'Aceptar',
+              timer: 3000,
+              timerProgressBar: true,
+            });
+            // Recargar la página después de eliminar el test
+            window.location.reload();
+          },
+          error => {
+            console.error('Error al eliminar el test:', error);
+            Swal.fire({
+              title: 'Error',
+              text: 'Ocurrió un error al eliminar el test.',
+              icon: 'error',
+              showCancelButton: false
+            });
+          }
+        );
+      }
+    });
+  } else {
+    console.error('El objeto tesp o su propiedad id es indefinido.');
+  }
 }
 
-
-borrarTest( id: number) {
-  this.UsuarioService.eliminarTest(this.id, id).subscribe(
-    () => {
-      console.log('Test eliminado correctamente.');
-      // Opcional: Puedes actualizar la lista de pruebas en la vista si lo deseas.
-    },
-    error => {
-      console.error('Error al eliminar el test:', error);
-      // Maneja el error si es necesario.
-    }
-  );
+borrarTestt(test: any, idUsuario: number) {
+  if (test?.id) {
+    Swal.fire({
+      title: '¿Estás seguro?',
+      text: 'Esta acción eliminará el tesp. ¿Estás seguro de continuar?',
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonText: 'Sí, eliminar',
+      cancelButtonText: 'Cancelar',
+    }).then((result) => {
+      if (result.isConfirmed) {
+        this.UsuarioService.eliminarTest(this.usuarioData.idUsuario, test.id).subscribe(
+          () => {
+            console.log('Test eliminado correctamente.');
+            Swal.fire({
+              title: '¡Test Eliminado!',
+              text: 'El tesp ha sido eliminado correctamente.',
+              icon: 'success',
+              showCancelButton: false,
+              confirmButtonText: 'Aceptar',
+              timer: 3000,
+              timerProgressBar: true,
+            });
+            // Recargar la página después de eliminar el test
+            window.location.reload();
+          },
+          error => {
+            console.error('Error al eliminar el test:', error);
+            Swal.fire({
+              title: 'Error',
+              text: 'Ocurrió un error al eliminar el test.',
+              icon: 'error',
+              showCancelButton: false
+            });
+          }
+        );
+      }
+    });
+  } else {
+    console.error('El objeto tesp o su propiedad id es indefinido.');
+  }
 }
 
   eliminarUsuario(idUsuario: number): void {
@@ -186,7 +237,8 @@ borrarTest( id: number) {
         this.UsuarioService.eliminarUsuario(idUsuario).subscribe(
           () => {
             Swal.fire('Usuario eliminado', 'El usuario se ha eliminado correctamente.', 'success');
-            // Realizar cualquier otra acción necesaria después de eliminar el usuario
+            // Recargar la página después de eliminar el test
+            window.location.reload();
           },
           (error) => {
             console.log('Error al eliminar el usuario:', error);
@@ -196,5 +248,17 @@ borrarTest( id: number) {
       }
     });
   }
-  
+  logout(): void {
+    localStorage.setItem('idUsuario', '')
+    localStorage.removeItem('token');
+    this.router.navigate(['/']); 
+    Swal.fire({
+      title: '¡Sesión desactivada!',
+      icon: 'success',
+      showCancelButton: false,
+      confirmButtonText: 'Aceptar',
+      timer: 1000,
+      timerProgressBar: true,
+    });
+  }
 }

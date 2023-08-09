@@ -1,0 +1,63 @@
+<nav class="navbar navbar-expand-lg">
+  <div class="container-fluid">
+    
+   
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarText">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        
+          <li class="nav-item">
+              <a class="nav-link" routerLink="/listas">Lista de Usuarios</a>
+            </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/perfil">Mi Perfil</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/encuestas">Crear Test Tecnicos</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/buscar">Ver test Tecnicos</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/crearpsicometrico">Crear test Psicometrico </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/buscarP">Buscar Test creados Psicometricos  |</a>
+        </li>
+      </ul>
+      <div class="button-container">
+        <button id="button" type="button" class="btn btn-primary btn-lg " (click)="logout()"   >Logout</button>
+      </div>
+    </div>
+  </div>
+</nav>
+<div class="container">
+  <form (ngSubmit)="guardarExamen()">
+  <label for="nombre">Nombre del Examen:</label>
+  <input type="text" id="nombre" [(ngModel)]="nombreExamen" required name="nombre">
+
+  <div *ngFor="let pregunta of preguntas; let i = index">
+    <label for="pregunta{{i}}">Pregunta {{i + 1}}:</label>
+    <input type="text" id="pregunta{{i}}" [(ngModel)]="pregunta.titulo" required name="pregunta{{i}}">
+    
+    <!-- ... (formulario y otras partes) ... -->
+
+<div *ngFor="let respuesta of pregunta.respuestas; let j = index" class="respuesta-container">
+  <input type="text" [(ngModel)]="pregunta.respuestas[j]" required name="respuesta{{i}}{{j}}">
+  <button type="button" (click)="eliminarRespuesta(i, j)">Eliminar</button>
+</div>
+<button type="button" (click)="agregarRespuesta(i)">Agregar Respuesta</button>
+
+<!-- ... (botones y cierre de form) ... -->
+</div>
+  
+  
+  <button type="button" (click)="agregarPregunta()">Agregar Pregunta</button>
+  <button type="submit">Crear Examen</button>
+</form><br><br><br><br><br><br>
+</div>
+
+
+

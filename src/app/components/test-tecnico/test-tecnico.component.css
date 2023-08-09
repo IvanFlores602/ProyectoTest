@@ -1,0 +1,9 @@
+.container{
+    background: rgba(212, 211, 211, 0.768);
+  }
+  .mover {
+      margin-top: 20px; /* Ajusta el margen superior según lo necesites */
+    }
+    .container-fluid{
+      background: rgb(238, 135, 25, .7) ;
+    }

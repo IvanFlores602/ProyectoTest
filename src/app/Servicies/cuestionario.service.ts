@@ -17,14 +17,20 @@ export class CuestionarioService {
   }
 
   obtenerCuestionarioPorId(id: number): Observable<Cuestionario> {
-    return this.http.get<Cuestionario>(`${this.baseUrl}/${id}`);
+    const url = `${this.baseUrl}/${id}`;
+    return this.http.get<Cuestionario>(url);
   }
-
+  
+  buscarCuestionariosPorTitulo(titulo: string): Observable<Cuestionario[]> {
+    const url = `${this.baseUrl}?titulo=${titulo}`;
+    return this.http.get<Cuestionario[]>(url);
+  }
   obtenerTodosLosCuestionarios(): Observable<Cuestionario[]> {
     return this.http.get<Cuestionario[]>(this.baseUrl);
   }
 
   eliminarCuestionario(id: number): Observable<void> {
-    return this.http.delete<void>(`${this.baseUrl}/${id}`);
+    const url = `${this.baseUrl}/${id}`;
+    return this.http.delete<void>(url);
   }
 }

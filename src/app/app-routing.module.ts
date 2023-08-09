@@ -15,6 +15,12 @@ import { ListaComponent } from './administrador/lista/lista.component';
 import { InformacionComponent } from './administrador/informacion/informacion.component';
 import { AlertaPComponent } from './alerta/alerta-p/alerta-p.component';
 import { AlertaTComponent } from './alerta/alerta-t/alerta-t.component';
+import { EncuestasComponent } from './administrador/encuestas/encuestas.component';
+import { BuscarComponent } from './administrador/buscar/buscar.component';
+import { PsicometricoComponent } from './administrador/psicometrico/psicometrico.component';
+import { BuscarPComponent } from './administrador/buscar-p/buscar-p.component';
+import { TestPsicometricoComponent } from './components/test-psicometrico/test-psicometrico.component';
+import { TestTecnicoComponent } from './components/test-tecnico/test-tecnico.component';
 
 
 const routes: Routes = [
@@ -32,7 +38,13 @@ const routes: Routes = [
   { path: 'listas', component: ListaComponent},
   { path: 'informacionUsuario', component: InformacionComponent},
   { path: 'alertp', component: AlertaPComponent},
-  {path: 'alertT', component: AlertaTComponent}
+  {path: 'alertT', component: AlertaTComponent},
+  {path: 'encuestas', component: EncuestasComponent},
+  {path: 'buscar', component: BuscarComponent},
+  { path: 'crearpsicometrico', component: PsicometricoComponent},
+  {path: 'buscarP', component:BuscarPComponent},
+  {path: 'Psicometrico', component: TestPsicometricoComponent},
+  {path: 'Tecnico', component: TestTecnicoComponent}
 ];
 
 @NgModule({

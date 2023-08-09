@@ -1,7 +1,7 @@
 <nav class="navbar navbar-expand-lg">
     <div class="container-fluid">
       
-      <a class="navbar-brand" href="https://www.infotec.mx/">  Centro de Investigación INFOTEC</a>
+     
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
@@ -15,7 +15,16 @@
             <a class="nav-link" routerLink="/perfil">Mi Perfil</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" routerLink="/create-quiz">Crear Encuestas</a>
+            <a class="nav-link" routerLink="/encuestas">Crear Test Tecnicos</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" routerLink="/buscar">Ver test Tecnicos</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" routerLink="/crearpsicometrico">Crear test Psicometrico </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" routerLink="/buscarP">Buscar Test creados Psicometricos  |</a>
           </li>
         </ul>
         <div class="button-container">
@@ -92,43 +101,55 @@
   
   <div class="container mt-4">
     <div class="row">
-      <!-- Primer div a la izquierda -->
+            <!-- Primer div a la izquierda -->
       <div class="col-md-6 float-left">
         <div class="card2">
-          <div class="card-header">
-            Test Psicometrico del usuario
+          <h4> Test Psicometrico del usuario </h4> 
+          <div class="card-header" *ngIf="usuarioSeleccionado">
+            
           </div>
           <div class="card-body">
-            <ul class="list-group">
-              <li *ngFor="let tesp of tesps" class="list-group-item">
-                <h5 class="mb-1">{{ tesp.nombreTest }}</h5>
-                <p class="mb-1">Puntaje: {{ tesp.puntaje }}</p>
-                <p class="mb-0">Descripción: {{ tesp.descripcion }}</p>
-                <hr>
-                <button class="btn btn-danger" (click)="borrarTestP(idUsuario!,tesp.id)"> Borrar Test del usuario</button>
-              </li>
-            </ul>
+            <ng-container *ngIf="tesps && tesps.length > 0; else noTespTests">
+              <ul class="list-group">
+                <li *ngFor="let tesp of tesps" class="list-group-item">
+                  <h5 class="mb-1">{{ tesp.nombreTest }}</h5>
+                  <p class="mb-1">Puntaje: {{ tesp.puntaje }}</p>
+                  <p class="mb-0">Descripción: {{ tesp.descripcion }}</p>
+                  <hr>
+                  <button class="btn btn-danger" (click)="borrarTestP(tesp, usuarioData.idUsuario)">Borrar Test del usuario</button>
+                </li>
+              </ul>
+            </ng-container>
+            <ng-template #noTespTests>
+              <h1>No se han realizado test Psicometricos o se han borrado.</h1>
+            </ng-template>
           </div>
         </div>
       </div>
-  
       <!-- Segundo div a la derecha -->
       <div class="col-md-6 float-right">
         <div class="card3">
           <div class="card-header">
-            Test Tecnico del usuario
+            <h4> Test Técnico del usuario </h4> 
           </div>
           <div class="card-body">
-            <ul class="list-group">
-              <li *ngFor="let test of tests" class="list-group-item">
-                <h5 class="mb-1">{{ test.nombreTest }}</h5>
-                <p class="mb-1">Puntaje: {{ test.puntaje }}</p>
-                <p class="mb-0">Descripción: {{ test.descripcion }}</p> <hr>
-                <button class="btn btn-danger" (click)="borrarTest(id)"> Borrar Test del usuario</button>
-              </li>
-            </ul>
+            <ng-container *ngIf="tests && tests.length > 0; else noTests">
+              <ul class="list-group">
+                <li *ngFor="let test of tests" class="list-group-item">
+                  <h5 class="mb-1">{{ test.nombreTest }}</h5>
+                  <p class="mb-1">Puntaje: {{ test.puntaje }}</p>
+                  <p class="mb-0">Descripción: {{ test.descripcion }}</p> <hr>
+                  <button class="btn btn-danger" (click)="borrarTestt(test, usuarioData.idUsuario)">Borrar Test del usuario</button>
+                </li>
+              </ul>
+            </ng-container>
+            <ng-template #noTests>
+              <h1>No se han realizado test Técnico o se han borrado.</h1>
+            </ng-template>
           </div><br>
         </div>
-      </div><br>
+      </div>
+
+      <br>
     </div>
   </div><br><br><br>

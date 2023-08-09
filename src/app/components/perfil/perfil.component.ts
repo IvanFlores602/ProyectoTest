@@ -122,31 +122,88 @@ hayCambiosEnDatos(): boolean {
 }
   
 
-borrarTest( id: number) {
-  this.usuarioService.eliminarTest(this.id, id).subscribe(
-    () => {
-      console.log('Test eliminado correctamente.');
-      // Opcional: Puedes actualizar la lista de pruebas en la vista si lo deseas.
-    },
-    error => {
-      console.error('Error al eliminar el test:', error);
-      // Maneja el error si es necesario.
+
+
+// ...
+
+borrarTest(id: number) {
+  Swal.fire({
+    title: '¿Estás seguro?',
+    text: 'Una vez eliminado, no podrás recuperar este test.',
+    icon: 'warning',
+    showCancelButton: true,
+    confirmButtonText: 'Sí, borrar',
+    cancelButtonText: 'Cancelar'
+  }).then((result) => {
+    if (result.isConfirmed) {
+      this.usuarioService.eliminarTest(this.id, id).subscribe(
+        () => {
+          console.log('Test eliminado correctamente.');
+          Swal.fire({
+            title: '¡Test eliminado!',
+            text: 'El test ha sido eliminado exitosamente.',
+            icon: 'success',
+            showCancelButton: false
+          }).then(() => {
+            // Recargar la página después de eliminar el test
+            location.reload();
+          });
+        },
+        error => {
+          console.error('Error al eliminar el test:', error);
+          Swal.fire({
+            title: 'Error',
+            text: 'Ocurrió un error al eliminar el test. Por favor, inténtalo nuevamente.',
+            icon: 'error',
+            showCancelButton: false
+          });
+        }
+      );
+    } else if (result.dismiss === Swal.DismissReason.cancel) {
+      // El usuario canceló el borrado, no hacer nada.
     }
-  );
+  });
 }
 
 
+
 borrarTestP( id: number) {
+  Swal.fire({
+    title: '¿Estás seguro?',
+    text: 'Una vez eliminado, no podrás recuperar este test.',
+    icon: 'warning',
+    showCancelButton: true,
+    confirmButtonText: 'Sí, borrar',
+    cancelButtonText: 'Cancelar'
+  }).then((result) => {
+    if (result.isConfirmed) {
   this.usuarioService.eliminarTestP(this.id, id).subscribe(
     () => {
       console.log('Test eliminado correctamente.');
-      // Opcional: Puedes actualizar la lista de pruebas en la vista si lo deseas.
+      Swal.fire({
+        title: '¡Test eliminado!',
+        text: 'El test ha sido eliminado exitosamente.',
+        icon: 'success',
+        showCancelButton: false
+      }).then(() => {
+        // Recargar la página después de eliminar el test
+        location.reload();
+      });
     },
     error => {
       console.error('Error al eliminar el test:', error);
-      // Maneja el error si es necesario.
+      Swal.fire({
+        title: 'Error',
+        text: 'Ocurrió un error al eliminar el test. Por favor, inténtalo nuevamente.',
+        icon: 'error',
+        showCancelButton: false
+      });
     }
   );
+} else if (result.dismiss === Swal.DismissReason.cancel) {
+  // El usuario canceló el borrado, no hacer nada.
+}
+});
 }
   //Subir Archivos
 onFileSelected(event: any): void {

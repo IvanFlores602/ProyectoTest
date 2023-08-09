@@ -14,6 +14,6 @@ export class AlertaPComponent implements OnInit {
   }
   goToNextComponent() {
     // Navegar al siguiente componente
-    this.router.navigate(['/testp']);
+    this.router.navigate(['/Psicometrico']);
   }
 }

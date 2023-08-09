@@ -1,5 +1,6 @@
 export interface Cuestionario {
     idCuestionario?: number;
+    titulo:string;
     pregunta1: string;
     respuesta11: string;
     respuesta12: string;
@@ -50,5 +51,6 @@ export interface Cuestionario {
     respuesta102: string;
     respuesta103: string;
     respuesta104: string;
+
   }
   

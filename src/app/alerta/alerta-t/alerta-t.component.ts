@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-
+import { Router } from '@angular/router';
 @Component({
   selector: 'app-alerta-t',
   templateUrl: './alerta-t.component.html',
@@ -7,9 +7,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AlertaTComponent implements OnInit {
 
-  constructor() { }
+  constructor(private router: Router) { }
 
   ngOnInit(): void {
   }
-
+  goToNextComponent() {
+    // Navegar al siguiente componente
+    this.router.navigate(['/Tecnico']);
+  }
 }
