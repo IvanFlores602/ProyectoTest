@@ -39,7 +39,7 @@ export class LoginComponent implements OnInit {
             timer: 3000,
             timerProgressBar: true,
           }).then(() => {
-            if (this.user.correoElectronico.toLowerCase() === 'iivaan@gmail') {
+            if (this.user.correoElectronico.toLowerCase() === 'admin@gmail.com') {
               this.router.navigate(['/listas']).then(() => {
                 window.location.reload();
               });

@@ -47,7 +47,7 @@ export class PsicometricoComponent implements OnInit {
   if (this.nombreExamen.trim() === '') {
     Swal.fire({
       title: 'Error',
-      text: 'Debe ingresar un nombre para el examen.',
+      text: 'Debe ingresar un nombre titulo para el examen.',
       icon: 'error',
       confirmButtonText: 'Aceptar'
     });
@@ -70,14 +70,14 @@ export class PsicometricoComponent implements OnInit {
     if (pregunta.titulo.trim() === '') {
       Swal.fire({
         title: 'Error',
-        text: 'Debe ingresar un título para todas las preguntas.',
+        text: 'Debe ingresar un texto para todas las preguntas.',
         icon: 'error',
         confirmButtonText: 'Aceptar'
       });
       return;
     }
 
-    
+ 
   }
     
     const nuevoExamen: Examen = new Examen();

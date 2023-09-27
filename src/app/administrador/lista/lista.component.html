@@ -28,7 +28,7 @@
           </li>
         </ul>
         <div class="button-container">
-          <button id="button" type="button" class="btn btn-primary btn-lg "   >Logout</button>
+          <button id="button" type="button" class="btn btn-primary btn-lg "  (click)="logout()" >Logout</button>
         </div>
       </div>
     </div>
@@ -75,12 +75,12 @@
           <input type="email" id="email"  name="email" class="form-control" [(ngModel)]="usuarioData.correoElectronico" name="third" required>
         </div>
         <div class="form-group">
-          <label for="genero">Género:</label>
-          <select class="form-select" id="registroGenero" name="genero" [(ngModel)]="usuarioData.genero">
-            <option value="" disabled>Selecciona tu género</option>
-            <option value="masculino">Masculino</option>
-            <option value="femenino">Femenino</option>
-          </select>
+          <label for="registroGenero" class="form-label">¿Estas seguro de cambiar tu genero {{usuarioData.genero}}?</label>
+                      <select class="form-select" id="registroProfesion"  [(ngModel)]="usuarioData.genero" name="eighth" required #eighth="ngModel">
+                        <option value="" selected disabled>Selecciona tu genero</option>
+                        <option value="Hombre">Hombre</option>
+                        <option value="Mujer">Mujer</option>
+                      </select>
         </div>        
           <div class="form-group">
             <label for="edad">Edad:</label>
